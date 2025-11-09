@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="/js/results.js" defer></script>
+    <style>
+        .quoteBox {
+            width: 80%;
+            border: solid;
+            border-radius: 15px;
+            border-width: 1px;
+            margin: 10px auto;
+            padding-top: 10px;
+            padding-left: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <% for (let row of result) { %>
+            <div class="quoteBox">
+                <p>
+                    <%= row.quote%>
+                </p>
+                <p>Likes: <%= row.likes%>
+                </p>
+                <a href="#" class="authorLink" authorId="<%= row.authorId%>">
+                    <%= row.fullName%>
+                </a>
+                <br>
+            </div>
+
+            <% } %>
+
+                <dialog id="authorModal">
+                    <div id="authorInfo">
+                        <h2 id="authorName"></h2>
+                        <img src="" id="authorImage" width="300px">
+                        <p><strong>Biography:</strong> <span id="authorBiography"></span></p>
+                        <p><strong>Country:</strong> <span id="authorCountry"></span></p>
+                        <p><strong>Date of Birth:</strong> <span id="authorDob"></span></p>
+                        <p><strong>Date of Death:</strong> <span id="authorDod"></span></p>
+                        <p><strong>Profession:</strong> <span id="authorProfession"></span></p>
+                        <p><strong>Sex:</strong> <span id="authorSex"></span></p>
+                    </div>
+                    <button id="closeModal">Close</button>
+                </dialog>
+
+</body>
+
+</html>
